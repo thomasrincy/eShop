@@ -23,3 +23,12 @@ jobs:
       run: dotnet build ./eShopOnWeb.sln --configuration Release
     - name: Test
       run: dotnet test ./eShopOnWeb.sln --configuration Release
+    - name: Azure Container Registry Login
+      uses: Azure/docker-login@v1
+      with:
+        # Container registry username
+        username: ${{ secrets.ACR_USER_rt}} 
+        # Container registry password
+        password: ${{ secrets.ACR_PASSWORD_rt}}
+        # Container registry server url
+        login-server: ${{ secrets.ACR_SECRET_rt}}
